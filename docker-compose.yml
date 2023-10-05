@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  filebrowser:
+    image: bde2020/hdfs-filebrowser:3.11
+    container_name: fbnet-hadoop-filebrowser
+    hostname: filebrowser
+#   domainname: fbnet-hadoop
+    networks:
+      - fbnet-hadoop
+    restart: always
+    environment:
+      - NAMENODE_HOST=namenode
+    ports:
+      - "8088:8088"
+
+networks:
+  fbnet-hadoop:
+    driver: bridge
+    external: True
